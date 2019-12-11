@@ -1,7 +1,7 @@
 version: '3.5'
 
 services:
-  httpd:
+  ugamela_php:
      image: php:7.0-apache
      restart: always
      ports:
@@ -9,10 +9,11 @@ services:
      volumes:
        - ..:/var/www/html
        - /var/www/html/docker
+       - ./config.php:/var/www/html/core/config.php
      links:
-       - maria_db
+       - ugamela_db
 
-  maria_db:
+  ugamela_db:
     image: mariadb
     restart: always
     environment:
